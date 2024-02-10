@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Add dark medical-themed styles */
+        body {
+            background-color: #17202a; /* Dark blue background color */
+            color: #ffffff; /* White text color */
+        }
+
+        .container {
+            position: relative;
+            min-height: 100vh;
+            padding-top: 60px; /* Adjust to match the height of the logo */
+            padding-bottom: 100px; /* Adjust to match the height of the footer */
+            background-color: #1e272e; /* Darker blue background color for container */
+            color: #ffffff; /* White text color */
+            border-radius: 10px;
+            border: 1px solid transparent; /* Transparent border */
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), /* Neon light effect */
+                        0 0 30px rgba(0, 255, 255, 0.6), /* Neon light effect */
+                        0 0 40px rgba(0, 255, 255, 0.7), /* Neon light effect */
+                        0 0 50px rgba(0, 255, 255, 0.8); /* Neon light effect */
+        }
+
+        .logo {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            width: 100px; /* Adjust the width of your logo */
+            z-index: 1000; /* Ensure logo is above other elements */
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background-color: #1e272e; /* Darker blue background color for footer */
+            padding: 10px 0;
+            color: #ffffff; /* White text color */
+        }
+
+        h1 {
+            text-align: center;
+            color: #34dbc8; /* Light blue color */
+            margin-top: 20px; /* Adjust margin to separate from logo */
+        }
+
+        input[type="text"],
+        button {
+            background-color: #34495e; /* Darker blue background color for input fields and buttons */
+            color: #ffffff; /* White text color */
+            border: 1px solid #ffffff; /* White border */
+        }
+
+        input[type="text"]::placeholder {
+            color: #bdc3c7; /* Light grey placeholder text color */
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border: 1px solid #34d5db; /* Light blue border on focus */
+        }
+
+        button:hover {
+            background-color: #2c3e50; /* Slightly darker blue background color on hover */
+        }
+    </style>
+</head>
+<body>
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Your Logo" class="logo">
+    <div class="container">
+        <h1>Heart Disease Prediction</h1>
+        <form action="/predict" method="post">
+            {% for key, value in explanations.items() %}
+            <label for="{{ key }}">{{ value }}:</label>
+            <input type="text" id="{{ key }}" name="{{ key }}" required>
+            {% endfor %}
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+    <div class="footer">
+        Contact us at: <a href="mailto:chhavi.mohitkar06@gmail.com">chhavi.mohitkar06@gmail.com</a><br>
+        Made with <span style="color: #e74c3c;">❤️</span> by Chhavi
+    </div>
+</body>
+</html>
